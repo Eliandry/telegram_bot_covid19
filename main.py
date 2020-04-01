@@ -3,7 +3,7 @@ from telebot import types
 import COVID19Py
 
 covid19 = COVID19Py.COVID19()
-bot = telebot.TeleBot('ВАШ_API_КЛЮЧ')
+bot = telebot.TeleBot('1229612694:AAEM0N0LJfTKf8oM0SSSJJ4ErjtrJYYQedE')
 
 @bot.message_handler(commands=['start'])
 def start(message):
