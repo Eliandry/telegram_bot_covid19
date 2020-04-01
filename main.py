@@ -14,8 +14,8 @@ def start(message):
 	btn4 = types.KeyboardButton('Беларусь')
 	markup.add(btn1, btn2, btn3, btn4)
 
-	send_message = f"<b>Привет {message.from_user.first_name}!</b><br>Чтобы узнать данные про коронавируса напишите " \
-		f"название страны, например: США, Украина, Россия и так далее<br><br>Заходи к нам на сайт <a href='https://itproger.com'>itProger</a>"
+	send_message = f"<b>Привет {message.from_user.first_name}!</b>/n Чтобы узнать данные про коронавируса напишите " \
+		f"название страны, например: США, Украина, Россия и так далее"
 	bot.send_message(message.chat.id, send_message, parse_mode='html', reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
@@ -42,14 +42,14 @@ def mess(message):
 		location = covid19.getLocationByCountryCode("JP")
 	else:
 		location = covid19.getLatest()
-	final_message = f"<u>Данные по всему миру:</u><br><b>Заболевших: </b>{location['confirmed']:,}<br><b>Сметрей: </b>{location['deaths']:,}"
+	final_message = f"<u>Данные по всему миру:</u> \n <b>Заболевших: </b>{location['confirmed']:,}<br><b>Сметрей: </b>{location['deaths']:,}"
 
 	if final_message == "":
 		date = location[0]['last_updated'].split("T")
 		time = date[1].split(".")
-		final_message = f"<u>Данные по стране:</u><br>Население: {location[0]['country_population']:,}<br>" \
-				f"Последнее обновление: {date[0]} {time[0]}<br>Последние данные:<br><b>" \
-				f"Заболевших: </b>{location[0]['latest']['confirmed']:,}<br><b>Сметрей: </b>" \
+		final_message = f"<u>Данные по стране:</u> \n Население: {location[0]['country_population']:,}\n" \
+				f"Последнее обновление: {date[0]} {time[0]}\n Последние данные:\n<b>" \
+				f"Заболевших: </b>{location[0]['latest']['confirmed']:,}\n <b>Сметрей: </b>" \
 				f"{location[0]['latest']['deaths']:,}"
 
 	bot.send_message(message.chat.id, final_message, parse_mode='html')
