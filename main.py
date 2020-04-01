@@ -26,7 +26,7 @@ def mess(message):
     elif get_message == "сша":
         location=covid.getLocationByCountryCode("US")
     elif get_message == "беларусь":
-        location = covid19.getLocationByCountryCode("BY")
+        location = covid.getLocationByCountryCode("BY")
     elif get_message == "италия":
         location=covid.getLocationByCountryCode("IT")
     else:
